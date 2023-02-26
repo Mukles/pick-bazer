@@ -34,12 +34,27 @@ ol {
   list-style: none;
 }
 
+.section-padding {
+  padding-block: 50px;
+}
+
+::selection {
+  background-color: var(--yellow);
+  color: var(--white);
+}
+
 .container {
   max-width: 1176px;
   width: 100%;
   margin: auto;
+  padding-inline: 10px;
+}
 
-  @media (max-width: $md) {
-    padding-inline: 10px;
-  }
+.section-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 33px;
+  color: var(--semi-black);
+  padding-block: 15px;
 }

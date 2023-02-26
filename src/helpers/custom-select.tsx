@@ -10,10 +10,10 @@ const CustomeSelect = ({ children }: Props) => {
 
   return (
     <div className="selector">
-      <div className="select-field">
+      <button className="select-field">
         <span>{selectFeild}</span>
         <ChevronDownIcon />
-      </div>
+      </button>
       <ul className="select-list">{children}</ul>
     </div>
   );

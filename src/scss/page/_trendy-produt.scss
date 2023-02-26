@@ -1,0 +1,36 @@
+.trendy-collention {
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-block: 15px;
+
+    li:not(:last-child) {
+      padding-right: 35px;
+    }
+
+    button {
+      @include reset-button;
+      cursor: pointer;
+      background-color: transparent;
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 400;
+      color: var(--gray);
+    }
+  }
+}
+
+.product-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  & > * {
+    width: calc(25% - 12px);
+    margin-right: 12px;
+
+    @media (max-width: $md) {
+      width: calc(50% - 12px);
+    }
+  }
+}

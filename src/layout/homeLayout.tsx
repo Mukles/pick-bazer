@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import Fotter from "../Components/fotter";
 import Header from "../Components/header/header";
 
 const HomeLayout = () => {
@@ -6,6 +7,7 @@ const HomeLayout = () => {
     <>
       <Header />
       <Outlet />
+      <Fotter />
     </>
   );
 };
