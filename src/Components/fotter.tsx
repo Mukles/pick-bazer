@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo-footer.png";
+import { data } from "../data/footer/footer";
 
 const Fotter = () => {
   return (
@@ -7,51 +8,32 @@ const Fotter = () => {
       <div className="container">
         <div className="footer-container">
           <div>
+            <Link to={"/"}>
+              <img src={logo} alt="logo" />
+            </Link>
+            <p>
+              Praesent dapibus, neque id cursus ucibus, tortor neque egestas
+              augue, eu vulputate magna eros eu erat.
+            </p>
+
+            <ul>
+              <li>
+                <Link to={"/"}></Link>
+              </li>
+            </ul>
+          </div>
+          {data.map((item) => (
             <div>
-              <Link to={"/"}>
-                <img src={logo} alt="logo" />
-              </Link>
-              <p>
-                Praesent dapibus, neque id cursus ucibus, tortor neque egestas
-                augue, eu vulputate magna eros eu erat.
-              </p>
-            </div>
-            <div className="">
-              <h4 className="widget-title">Useful Links</h4>
+              <h4 className="widget-title">{item.title}</h4>
               <ul>
-                <li>
-                  <Link to={"/"}>Useful Links</Link>
-                </li>
-                <li>
-                  <Link to={"/"}>About Media</Link>
-                </li>
+                {item.links.map(({ id, link, text }) => (
+                  <li key={id}>
+                    <Link to={link}>{text}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
-          </div>
-          <div>
-            <div className="">
-              <h4 className="widget-title">Useful Links</h4>
-              <ul>
-                <li>
-                  <Link to={"/"}>Useful Links</Link>
-                </li>
-                <li>
-                  <Link to={"/"}>About Media</Link>
-                </li>
-              </ul>
-            </div>
-            <div className="">
-              <h4 className="widget-title">Useful Links</h4>
-              <ul>
-                <li>
-                  <Link to={"/"}>Useful Links</Link>
-                </li>
-                <li>
-                  <Link to={"/"}>About Media</Link>
-                </li>
-              </ul>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </footer>

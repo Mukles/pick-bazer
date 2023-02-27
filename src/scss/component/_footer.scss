@@ -5,6 +5,29 @@ footer {
 .footer-container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+
+  & > * {
+    flex: 1;
+
+    @media (max-width: $sm) {
+      width: 50%;
+      flex: none;
+
+      &:not(:last-child) {
+        margin-bottom: 35px;
+      }
+    }
+
+    @media (max-width: $xsm) {
+      width: 100%;
+      flex: none;
+    }
+  }
+
+  ul li:not(:last-child) {
+    margin-bottom: 5px;
+  }
 
   img {
     width: 120px;
@@ -27,21 +50,7 @@ footer {
     color: var(--gray);
   }
 
-  & > * {
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-
-    & > * {
-      width: 50%;
-
-      a:hover {
-        color: var(--yellow);
-      }
-
-      li:not(:last-child) {
-        margin-bottom: 4px;
-      }
-    }
+  a:hover {
+    color: var(--yellow);
   }
 }

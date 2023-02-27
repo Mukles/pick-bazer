@@ -2,7 +2,14 @@
   .tabs {
     display: flex;
     justify-content: center;
-    margin-block: 15px;
+    margin-top: 2px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+
+    li {
+      padding-top: 12px;
+      text-align: center;
+    }
 
     li:not(:last-child) {
       padding-right: 35px;

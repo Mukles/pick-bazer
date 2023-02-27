@@ -7,7 +7,7 @@ import banner4 from "../../assets/img/home/banner/banner-4.jpg";
 
 const ShopByCatagory = () => {
   return (
-    <section className="section-padding">
+    <section>
       <div className="container">
         <h2 className="section-title">Shop by Categories</h2>
         <div className="catagory-container">

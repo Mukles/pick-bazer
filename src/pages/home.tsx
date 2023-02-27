@@ -5,6 +5,8 @@ import brand1 from "../assets/img/brands/1.png";
 import banner1 from "../assets/img/home/banner/intro/banner-1.jpg";
 import slide2 from "../assets/img/home/slider/slide-1-1.png";
 import slide1 from "../assets/img/home/slider/slide-1.png";
+import Blog from "../Components/home/blog";
+import Service from "../Components/home/service-list";
 import ShopByCatagory from "../Components/home/shop-by-catagory";
 import TrendyProduct from "../Components/home/trendy-product";
 
@@ -94,6 +96,8 @@ const Home = () => {
 
       <TrendyProduct />
       <ShopByCatagory />
+      <Service />
+      <Blog />
     </>
   );
 };
