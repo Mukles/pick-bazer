@@ -11,6 +11,10 @@ import logo from "../../assets/img/logo.png";
 import CustomeSelect from "../../helpers/custom-select";
 import { useWindowSize } from "../../hooks/useWidth";
 
+interface Props {
+  setOpen: any;
+}
+
 const DropDown = () => {
   return (
     <ul className="top-menu">
@@ -78,7 +82,11 @@ const TopHeader = () => {
   );
 };
 
-const Header = () => {
+const Header = ({ setOpen }: Props) => {
+  const onClose = () => {
+    console.log("hello");
+    setOpen((open: boolean) => !open);
+  };
   return (
     <header>
       <div className="container">
@@ -86,6 +94,9 @@ const Header = () => {
 
         <div className="main-header">
           <div className="header-left">
+            <button onClick={onClose} type="button" className="nav-toggler">
+              <i className="fa fa-bars nav-toggler-icon"></i>
+            </button>
             <Link to={"/"}>
               <img src={logo} alt="brand-logo" />
             </Link>

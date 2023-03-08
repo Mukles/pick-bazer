@@ -21,6 +21,15 @@ const ShopByCatagory = () => {
               </Link>
               <img src={banner} alt="img" />
             </div>
+            <div className="banner-img">
+              <Link to={"/"} className="banner-link">
+                <h3 className="banner-title">Home Decor</h3>
+                <span>
+                  Shop now <ArrowLongRightIcon />
+                </span>
+              </Link>
+              <img src={banner4} alt="img" />
+            </div>
           </div>
           <div>
             <div className="banner-img">

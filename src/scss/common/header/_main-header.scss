@@ -6,6 +6,19 @@
     display: flex;
     align-items: center;
 
+    .nav-toggler {
+      @include reset-button;
+      background-color: transparent;
+      margin-right: 10px;
+      font-size: 22px;
+      cursor: pointer;
+      display: none;
+
+      @media (max-width: $md) {
+        display: block;
+      }
+    }
+
     ul {
       margin-left: 50px;
       display: flex;

@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Fotter from "../Components/fotter";
 import Header from "../Components/header/header";
+interface Props {
+  setOpen: any;
+}
 
-const HomeLayout = () => {
+const HomeLayout = ({ setOpen }: Props) => {
   return (
     <>
-      <Header />
+      <Header setOpen={setOpen} />
       <Outlet />
       <Fotter />
     </>

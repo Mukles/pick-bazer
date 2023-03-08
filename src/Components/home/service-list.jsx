@@ -5,8 +5,8 @@ const Service = () => {
     <div className="service-section">
       <div className="container">
         <div className="icon-box-container">
-          {[...Array(3)].map((box) => (
-            <div className="icon-box">
+          {[...Array(3)].map((box, i) => (
+            <div className="icon-box" key={i}>
               <div className="icon-box-icon">
                 <RocketLaunchIcon />
               </div>
