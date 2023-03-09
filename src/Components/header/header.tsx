@@ -1,7 +1,6 @@
 import {
   ChevronDownIcon,
   HeartIcon,
-  MagnifyingGlassIcon,
   PhoneIcon,
   ShoppingCartIcon,
   UserIcon,
@@ -11,6 +10,7 @@ import logo from "../../assets/img/logo.png";
 import CustomeSelect from "../../helpers/custom-select";
 import { useWindowSize } from "../../hooks/useWidth";
 import CartList from "../cart/cartList";
+import Search from "../search";
 
 interface Props {
   setOpen: any;
@@ -142,10 +142,8 @@ const Header = ({ setOpen }: Props) => {
           </div>
           <div className="header-right">
             <ul>
-              <li>
-                <button>
-                  <MagnifyingGlassIcon />
-                </button>
+              <li className="search-wrapper">
+                <Search />
               </li>
               <li className="cart-dropdown">
                 <button>

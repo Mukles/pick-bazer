@@ -5,6 +5,8 @@
   bottom: 0px;
   height: 100vh;
   background: var(--semi-black);
+  z-index: 30;
+  box-shadow: 0.1rem 0 0.6rem 0 rgb(51 51 51 / 50%);
 
   & > div {
     width: 300px;

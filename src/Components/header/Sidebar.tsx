@@ -3,6 +3,7 @@ import {
   MagnifyingGlassIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 interface Props {
@@ -14,6 +15,14 @@ const Sidebar = ({ setOpen }: Props) => {
 
   return (
     <div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="mobile-overlay"
+        onClick={onClose}
+      ></motion.div>
+
       <button onClick={onClose} type="button" className="close">
         <XMarkIcon />
       </button>
