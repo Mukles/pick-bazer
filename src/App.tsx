@@ -4,6 +4,7 @@ import { useRoutes } from "react-router-dom";
 import Sidebar from "./Components/header/Sidebar";
 import HomeLayout from "./layout/homeLayout";
 import Home from "./pages/home";
+import ShopList from "./pages/shop-list";
 import "./scss/app.scss";
 
 function App() {
@@ -35,6 +36,10 @@ function App() {
         {
           index: true,
           element: <Home />,
+        },
+        {
+          path: "shop/list",
+          element: <ShopList />,
         },
       ],
     },
