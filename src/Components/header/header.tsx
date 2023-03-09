@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
 import CustomeSelect from "../../helpers/custom-select";
 import { useWindowSize } from "../../hooks/useWidth";
+import CartList from "../cart/cartList";
 
 interface Props {
   setOpen: any;
@@ -146,11 +147,12 @@ const Header = ({ setOpen }: Props) => {
                   <MagnifyingGlassIcon />
                 </button>
               </li>
-              <li>
+              <li className="cart-dropdown">
                 <button>
                   <ShoppingCartIcon />
                   <span className="cart-count">0</span>
                 </button>
+                <CartList />
               </li>
             </ul>
           </div>

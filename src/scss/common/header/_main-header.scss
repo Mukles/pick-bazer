@@ -63,6 +63,16 @@
     display: flex;
 
     li {
+      &.cart-dropdown {
+        position: relative;
+
+        &:hover .cartlist-wrapper {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+      }
+
       button {
         position: relative;
         background-color: transparent;
