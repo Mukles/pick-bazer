@@ -1,4 +1,5 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   DefaultGrid,
@@ -8,7 +9,36 @@ import {
 } from "../Components/icons/GridIcons";
 import Product from "../Components/product";
 
+const GridSystem = [
+  {
+    width: "100%",
+    id: 1,
+    type: "default",
+    icon: <DefaultGrid />,
+  },
+  {
+    id: 2,
+    width: "50%",
+    type: "two",
+    icon: <TwoByTwo />,
+  },
+  {
+    id: 3,
+    width: "33.333%",
+    type: "three",
+    icon: <ThreeByTwo />,
+  },
+  {
+    id: 4,
+    width: "25%",
+    type: "four",
+    icon: <FourByTwo />,
+  },
+];
+
 const ShopList = () => {
+  const [grid, setGrid] = useState(GridSystem[0]);
+
   return (
     <section>
       <div className="page-header">
@@ -142,25 +172,47 @@ const ShopList = () => {
                   </select>
                 </div>
                 <div className="tollbox-layout">
-                  <button className="active">
-                    <DefaultGrid />
-                  </button>
-                  <button>
-                    <TwoByTwo />
-                  </button>
-                  <button>
-                    <ThreeByTwo />
-                  </button>
-                  <button>
-                    <FourByTwo />
-                  </button>
+                  {GridSystem.map((item) => (
+                    <button
+                      onClick={() => setGrid(item)}
+                      key={item.id}
+                      className={`${item.type === grid.type ? "active" : ""}`}
+                    >
+                      {item.icon}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
-            <div className="product-list-container">
-              <Product className={"product-list"} />
-              <Product className={"product-list"} />
-              <Product className={"product-list"} />
+            <div
+              className={`product-list-container ${grid.type} ${
+                grid.type !== "default" ? "wrap" : ""
+              }`}
+            >
+              <Product
+                width={grid.width}
+                className={grid.type === "default" ? "product-list" : "wrap"}
+              />
+              <Product
+                width={grid.width}
+                className={grid.type === "default" ? "product-list" : "wrap"}
+              />
+              <Product
+                width={grid.width}
+                className={grid.type === "default" ? "product-list" : "wrap"}
+              />
+              <Product
+                width={grid.width}
+                className={grid.type === "default" ? "product-list" : "wrap"}
+              />
+              <Product
+                width={grid.width}
+                className={grid.type === "default" ? "product-list" : "wrap"}
+              />
+              <Product
+                width={grid.width}
+                className={grid.type === "default" ? "product-list" : "wrap"}
+              />
             </div>
           </main>
         </div>

@@ -153,6 +153,7 @@
   font-size: 13px;
   line-height: 16px;
   font-weight: 300;
+  color: var(--gray);
 
   &:hover {
     color: var(--yellow);
@@ -163,6 +164,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
+  color: var(--semi-black);
 
   @media (max-width: $xsm) {
     font-size: 13px;
@@ -337,6 +339,7 @@
     line-height: 17px;
     font-weight: 400;
     padding: 0;
+    max-width: 300px;
 
     @media (max-width: $xsm) {
       flex-direction: column;
@@ -374,7 +377,7 @@
 
     a {
       margin-inline: 0;
-      padding: 6px 25px;
+      padding: 8px 25px;
       border-color: var(--yellow);
       color: var(--yellow);
       flex: 1;

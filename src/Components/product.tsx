@@ -5,17 +5,28 @@ import product1 from "../assets/img/uploads/product-1.jpg";
 
 interface Props {
   className?: string;
+  width?: string;
 }
 
-const Product = ({ className }: Props) => {
+const Product = ({ className, width }: Props) => {
+  console.log({ className });
   return (
-    <div>
+    <div style={{ flexBasis: width }}>
       <div className={`product ${className}`}>
         <figure className="product-media">
           <span className="product-label">New</span>
           <Link to={"/"}>
             <img src={product1} alt="product" />
           </Link>
+
+          {className?.includes("wrap") && (
+            <div className="product-action">
+              <Link to={"/"}>
+                <ListBulletIcon />
+                <span>select options</span>
+              </Link>
+            </div>
+          )}
 
           {!className?.includes("product-list") && (
             <div className="product-vertical-action">
@@ -109,12 +120,14 @@ const Product = ({ className }: Props) => {
             </div>
           </div>
         ) : (
-          <div className="product-action">
-            <Link to={"/"}>
-              <ListBulletIcon />
-              <span>select options</span>
-            </Link>
-          </div>
+          !className?.includes("wrap") && (
+            <div className="product-action">
+              <Link to={"/"}>
+                <ListBulletIcon />
+                <span>select options</span>
+              </Link>
+            </div>
+          )
         )}
       </div>
     </div>
