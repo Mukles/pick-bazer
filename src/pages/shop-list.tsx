@@ -190,27 +190,21 @@ const ShopList = () => {
               }`}
             >
               <Product
-                width={grid.width}
                 className={grid.type === "default" ? "product-list" : "wrap"}
               />
               <Product
-                width={grid.width}
                 className={grid.type === "default" ? "product-list" : "wrap"}
               />
               <Product
-                width={grid.width}
                 className={grid.type === "default" ? "product-list" : "wrap"}
               />
               <Product
-                width={grid.width}
                 className={grid.type === "default" ? "product-list" : "wrap"}
               />
               <Product
-                width={grid.width}
                 className={grid.type === "default" ? "product-list" : "wrap"}
               />
               <Product
-                width={grid.width}
                 className={grid.type === "default" ? "product-list" : "wrap"}
               />
             </div>

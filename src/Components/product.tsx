@@ -5,13 +5,12 @@ import product1 from "../assets/img/uploads/product-1.jpg";
 
 interface Props {
   className?: string;
-  width?: string;
 }
 
-const Product = ({ className, width }: Props) => {
+const Product = ({ className }: Props) => {
   console.log({ className });
   return (
-    <div style={{ flexBasis: width }}>
+    <div>
       <div className={`product ${className}`}>
         <figure className="product-media">
           <span className="product-label">New</span>
