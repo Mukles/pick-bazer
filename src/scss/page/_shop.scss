@@ -16,7 +16,17 @@
       font-size: 40px;
       font-weight: 400;
       color: var(--semi-black);
-      margin-bottom: 3px;
+      margin-bottom: 5px;
+
+      @media (max-width: $md) {
+        font-size: 36px;
+        line-height: 40px;
+      }
+
+      @media (max-width: $sm) {
+        font-size: 32px;
+        line-height: 35px;
+      }
     }
 
     h3 {
@@ -24,6 +34,16 @@
       line-height: 22px;
       color: var(--yellow);
       font-weight: 400;
+
+      @media (max-width: $md) {
+        font-size: 18px;
+        line-height: 20px;
+      }
+
+      @media (max-width: $sm) {
+        font-size: 16px;
+        line-height: 18px;
+      }
     }
   }
 }

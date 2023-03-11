@@ -8,7 +8,6 @@ interface Props {
 }
 
 const Product = ({ className }: Props) => {
-  console.log({ className });
   return (
     <div>
       <div className={`product ${className}`}>

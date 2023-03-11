@@ -1,4 +1,4 @@
-import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -8,6 +8,8 @@ import {
   TwoByTwo,
 } from "../Components/icons/GridIcons";
 import Product from "../Components/product";
+import ProductHeader from "../helpers/product-header";
+import ProductNavbar from "../helpers/product-navbar";
 
 const GridSystem = [
   {
@@ -41,36 +43,8 @@ const ShopList = () => {
 
   return (
     <section>
-      <div className="page-header">
-        <div className="container">
-          <div className="page-title">
-            <h1>List</h1>
-            <h3>Shop</h3>
-          </div>
-        </div>
-      </div>
-
-      <div className="container">
-        <ul className="page-nav-container">
-          <li>
-            <Link to={"/"}>
-              <span>Home</span>
-              <ChevronRightIcon />
-            </Link>
-          </li>
-          <li>
-            <Link to={"/"}>
-              <span>Shop</span>
-              <ChevronRightIcon />
-            </Link>
-          </li>
-          <li>
-            <Link to={"/"}>
-              <span>List</span>
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <ProductHeader title={"Cart"} />
+      <ProductNavbar />
 
       <div className="container">
         <div className="shop-products">
