@@ -1,8 +1,10 @@
 import { ArrowLongRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import productImg from "../../assets/img/uploads/product-1.jpg";
 
 const CartList = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="cartlist-wrapper">
       <ul className="dropdown-cart-list">
@@ -62,7 +64,9 @@ const CartList = () => {
       </div>
 
       <div className="cart-buttons">
-        <button type="button">View Cart</button>
+        <button type="button" onClick={() => navigate("/shop/cart")}>
+          View Cart
+        </button>
         <button type="button">
           <span> Checkout</span>
           <ArrowLongRightIcon />

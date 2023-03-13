@@ -5,6 +5,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import SocalLinks from "../../helpers/socail-links";
 
 interface Props {
   setOpen: any;
@@ -65,44 +66,7 @@ const Sidebar = ({ setOpen }: Props) => {
         </li>
       </ul>
 
-      <ul className="socal-links">
-        <li>
-          <a
-            rel="noreferrer"
-            target={"_blank"}
-            href="https://www.facebook.com/mukles.116476"
-          >
-            <i className="fa-brands fa-facebook-f"></i>
-          </a>
-        </li>
-        <li>
-          <a
-            rel="noreferrer"
-            target={"_blank"}
-            href="https://www.facebook.com/mukles.116476"
-          >
-            <i className="fa-brands fa-twitter"></i>
-          </a>
-        </li>
-        <li>
-          <a
-            rel="noreferrer"
-            target={"_blank"}
-            href="https://www.facebook.com/mukles.116476"
-          >
-            <i className="fa-brands fa-instagram"></i>
-          </a>
-        </li>
-        <li>
-          <a
-            rel="noreferrer"
-            target={"_blank"}
-            href="https://www.facebook.com/mukles.116476"
-          >
-            <i className="fa-brands fa-youtube"></i>
-          </a>
-        </li>
-      </ul>
+      <SocalLinks />
     </div>
   );
 };

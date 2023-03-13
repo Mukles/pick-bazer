@@ -5,7 +5,7 @@ import {
   ShoppingCartIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
 import CustomeSelect from "../../helpers/custom-select";
 import { useWindowSize } from "../../hooks/useWidth";
@@ -84,8 +84,8 @@ const TopHeader = () => {
 };
 
 const Header = ({ setOpen }: Props) => {
+  const navigate = useNavigate();
   const onClose = () => {
-    console.log("hello");
     setOpen((open: boolean) => !open);
   };
   return (
@@ -146,7 +146,7 @@ const Header = ({ setOpen }: Props) => {
                 <Search />
               </li>
               <li className="cart-dropdown">
-                <button>
+                <button onClick={() => navigate("/shop/cart")}>
                   <ShoppingCartIcon />
                   <span className="cart-count">0</span>
                 </button>

@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useRoutes } from "react-router-dom";
 import Sidebar from "./Components/header/Sidebar";
+import ProductPreview from "./Components/product/product-preview";
 import HomeLayout from "./layout/homeLayout";
 import Cart from "./pages/cart";
 import Home from "./pages/home";
@@ -39,12 +40,16 @@ function App() {
           element: <Home />,
         },
         {
-          path: "/cart",
+          path: "/shop/cart",
           element: <Cart />,
         },
         {
           path: "shop/list",
           element: <ShopList />,
+        },
+        {
+          path: "product/:name",
+          element: <ProductPreview />,
         },
       ],
     },
