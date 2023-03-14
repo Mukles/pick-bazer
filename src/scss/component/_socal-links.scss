@@ -3,6 +3,10 @@
   justify-content: center;
   margin-block: 25px;
 
+  &.footer-socal {
+    justify-content: start;
+  }
+
   li {
     flex: none;
 

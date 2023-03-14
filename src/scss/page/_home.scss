@@ -16,12 +16,23 @@
     }
   }
 
-  .intro-slide {
+  .intro-sliders {
     width: calc(67% - 20px);
     margin-right: 20px;
+    overflow: hidden;
+    display: flex;
 
     @media (max-width: $md) {
       width: 100%;
+    }
+
+    & > div {
+      flex: 0 0 200%;
+      display: flex;
+    }
+
+    .intro-slide {
+      width: 50%;
       position: relative;
     }
 
@@ -41,6 +52,7 @@
       }
 
       & > picture {
+        overflow: hidden;
         position: absolute;
         left: 0;
         top: 0;

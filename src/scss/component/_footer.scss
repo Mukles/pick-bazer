@@ -54,3 +54,28 @@ footer {
     color: var(--yellow);
   }
 }
+
+.footer-bottom {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-items: center;
+  border-top: 1px solid #525455;
+  font-size: 14px;
+  line-height: 26px;
+  color: var(--gray);
+  font-weight: 300;
+
+  @media (max-width: $sm) {
+    flex-direction: column;
+  }
+
+  & > * {
+    padding-block: 18px;
+
+    @media (max-width: $sm) {
+      padding-block: 12px;
+    }
+  }
+}

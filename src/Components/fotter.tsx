@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/img/logo-footer.png";
+import payments from "../assets/img/payments.png";
 import { data } from "../data/footer/footer";
+import SocalLinks from "../helpers/socail-links";
 
 const Fotter = () => {
   return (
@@ -20,6 +22,7 @@ const Fotter = () => {
                 <Link to={"/"}></Link>
               </li>
             </ul>
+            <SocalLinks className="footer-socal" />
           </div>
           {data.map((item, i) => (
             <div key={i}>
@@ -33,6 +36,12 @@ const Fotter = () => {
               </ul>
             </div>
           ))}
+        </div>
+        <div className="footer-bottom">
+          <p>Copyright © 2023 Molla Store. All Rights Reserved.</p>
+          <div>
+            <img src={payments} alt="payments" />
+          </div>
         </div>
       </div>
     </footer>

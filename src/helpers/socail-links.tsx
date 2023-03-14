@@ -1,6 +1,10 @@
-const SocalLinks = () => {
+interface Props {
+  className?: string;
+}
+
+const SocalLinks = ({ className }: Props) => {
   return (
-    <ul className="socal-links">
+    <ul className={"socal-links " + className}>
       <li>
         <a
           rel="noreferrer"

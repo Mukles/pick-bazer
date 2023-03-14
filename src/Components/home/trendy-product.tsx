@@ -1,4 +1,4 @@
-import { tabs } from "../../data/home/tabs";
+import TabPills from "../../helpers/tab-pills";
 import Product from "../product";
 
 const TrendyProduct = () => {
@@ -7,14 +7,7 @@ const TrendyProduct = () => {
       <div className="container">
         <div className="trendy-collention">
           <h2 className="section-title">Trendy Products</h2>
-          <ul className="tabs">
-            {tabs.map((tab) => (
-              <li key={tab.id}>
-                <button type="button">{tab.text}</button>
-              </li>
-            ))}
-          </ul>
-
+          <TabPills />
           <div className="product-container">
             {[...Array(10)].map((item, i) => (
               <Product key={i} />
