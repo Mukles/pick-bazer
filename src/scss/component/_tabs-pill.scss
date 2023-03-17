@@ -17,11 +17,22 @@
     text-align: center;
     color: var(--gray);
     padding: 6px 15px;
+    position: relative;
 
-    &.active {
-      color: var(--yellow);
-      border-bottom: 1px solid var(--yellow);
+    .underline {
+      position: absolute;
+      top: 100%;
+      left: 0%;
+      width: 100%;
+      height: 1px;
+      background-color: var(--yellow);
+      display: block;
     }
+
+    // &.active {
+    //   color: var(--yellow);
+    //   border-bottom: 1px solid var(--yellow);
+    // }
   }
 
   button {

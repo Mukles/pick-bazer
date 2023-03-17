@@ -1,3 +1,4 @@
+import { tabs } from "../../data/home/tabs";
 import TabPills from "../../helpers/tab-pills";
 import Product from "../product";
 
@@ -7,7 +8,7 @@ const TrendyProduct = () => {
       <div className="container">
         <div className="trendy-collention">
           <h2 className="section-title">Trendy Products</h2>
-          <TabPills />
+          <TabPills tabsList={tabs} />
           <div className="product-container">
             {[...Array(10)].map((item, i) => (
               <Product key={i} />

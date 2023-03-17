@@ -27,27 +27,23 @@ const sliderItems = [
 ];
 
 const Slider = () => {
+  const LEFT_OFFSET = -100;
   const controls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setwidth] = useState(0);
-  const [page, setPage] = useState();
 
   const resizeHandler = () => {
     if (!containerRef.current?.scrollWidth) return;
-    setwidth(containerRef.current.offsetWidth / 2);
+    setwidth(
+      containerRef.current.scrollWidth - containerRef.current.offsetWidth
+    );
   };
 
   useEffect(() => {
-    setwidth((containerRef.current?.offsetWidth as number) / 2);
+    resizeHandler();
     window.addEventListener("resize", resizeHandler);
+    window.removeEventListener("resize", resizeHandler);
   }, []);
-
-  const swipePower = (offset: number, velocity: number) => {
-    return Math.abs(offset) * velocity;
-  };
-
-  const swipeConfidenceThreshold = 10000;
-  const LEFT_OFFSET = -100;
 
   const handlePanEnd = async (event: any, info: PanInfo) => {
     const x = info.offset.x;
@@ -61,9 +57,8 @@ const Slider = () => {
   };
 
   return (
-    <div className="intro-sliders">
+    <div ref={containerRef} className="intro-sliders">
       <motion.div
-        ref={containerRef}
         drag="x"
         dragElastic={0.1}
         dragMomentum={false}

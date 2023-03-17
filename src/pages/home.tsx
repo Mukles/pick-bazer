@@ -1,8 +1,7 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import brand1 from "../assets/img/brands/1.png";
 import banner1 from "../assets/img/home/banner/intro/banner-1.jpg";
 import Blog from "../Components/home/blog";
+import { BrandSlider } from "../Components/home/brand-slider";
 import Service from "../Components/home/service-list";
 import ShopByCatagory from "../Components/home/shop-by-catagory";
 import TrendyProduct from "../Components/home/trendy-product";
@@ -49,21 +48,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div style={{ overflow: "hidden" }}>
-              <motion.div
-                drag="x"
-                dragConstraints={{ left: 0, right: 300 }}
-                className="brands"
-              >
-                {[...Array(10)].map((item, i) => (
-                  <div className="brand" key={i}>
-                    <Link to={"/"}>
-                      <img src={brand1} alt="brand" />
-                    </Link>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
+            <BrandSlider />
           </div>
         </div>
       </section>

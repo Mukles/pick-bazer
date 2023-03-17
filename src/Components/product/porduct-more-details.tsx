@@ -1,3 +1,4 @@
+import { tabs } from "../../data/home/tabs";
 import TabPills from "../../helpers/tab-pills";
 
 const ProductMoreDetails = () => {
@@ -5,7 +6,7 @@ const ProductMoreDetails = () => {
     <section className="product-tabs-container">
       <div className="container">
         <div>
-          <TabPills className="product-tabs" />
+          <TabPills tabsList={tabs} className="product-tabs" />
 
           <div className="product-tab-content">
             <div className="product-desc-content">
