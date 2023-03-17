@@ -10,7 +10,7 @@ const CustomeSelect = ({ children }: Props) => {
 
   return (
     <div className="selector">
-      <button className="select-field">
+      <button onClick={() => setSelectFeild("USD")} className="select-field">
         <span>{selectFeild}</span>
         <ChevronDownIcon />
       </button>
