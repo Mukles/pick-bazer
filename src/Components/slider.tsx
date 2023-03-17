@@ -1,5 +1,5 @@
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
-import { motion } from "framer-motion";
+import { motion, PanInfo, useAnimation } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import banner1 from "../assets/img/home/slider/slide-1-1.png";
@@ -27,8 +27,10 @@ const sliderItems = [
 ];
 
 const Slider = () => {
+  const controls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setwidth] = useState(0);
+  const [page, setPage] = useState();
 
   const resizeHandler = () => {
     if (!containerRef.current?.scrollWidth) return;
@@ -40,15 +42,35 @@ const Slider = () => {
     window.addEventListener("resize", resizeHandler);
   }, []);
 
-  console.log({ width });
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
+  };
+
+  const swipeConfidenceThreshold = 10000;
+  const LEFT_OFFSET = -100;
+
+  const handlePanEnd = async (event: any, info: PanInfo) => {
+    const x = info.offset.x;
+    if (x < LEFT_OFFSET && x < 0) {
+      await controls.start({
+        x: "-50%",
+      });
+    } else {
+      await controls.start({ x: 0 });
+    }
+  };
 
   return (
     <div className="intro-sliders">
       <motion.div
         ref={containerRef}
         drag="x"
+        dragElastic={0.1}
         dragMomentum={false}
         dragConstraints={{ right: 0, left: -width }}
+        onPanEnd={handlePanEnd}
+        animate={controls}
+        transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
       >
         {sliderItems.map(({ background, slide, banner, margin }, i) => {
           return (
@@ -62,7 +84,17 @@ const Slider = () => {
                 backgroundPosition: "center",
               }}
             >
-              <div className="intro-content">
+              <motion.div
+                initial={{ opacity: 0, y: "-30%" }}
+                whileInView={{ opacity: 1, y: "-50%" }}
+                transition={{
+                  duration: 0.8,
+                  type: "tween",
+                  ease: "easeInOut",
+                  delay: 0.3,
+                }}
+                className="intro-content"
+              >
                 <h3>Topsale Collection</h3>
                 <h1>
                   Wood Cabinet <br /> Collection
@@ -71,7 +103,7 @@ const Slider = () => {
                   <span>SHOP NOW</span>
                   <ArrowLongRightIcon />
                 </Link>
-              </div>
+              </motion.div>
               <figure className="slide-img">
                 <picture>
                   <img style={margin} src={slide} alt={"slide-1 img"} />
