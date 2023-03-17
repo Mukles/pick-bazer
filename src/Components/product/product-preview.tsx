@@ -4,11 +4,50 @@ import {
   StarIcon,
   TableCellsIcon,
 } from "@heroicons/react/24/outline";
+import { useGesture } from "@use-gesture/react";
+import { useRef, useState } from "react";
 import SocalLinks from "../../helpers/socail-links";
 import ProductMoreDetails from "./porduct-more-details";
 import ProductSuggestion from "./product-suggestion";
 
 const ProductPreview = () => {
+  const imageRef = useRef<HTMLImageElement>(null);
+  const imgContainer = useRef<HTMLElement>(null);
+  const [crop, setCrop] = useState({ x: 0, y: 0, scale: 1 });
+
+  useGesture(
+    {
+      onDrag: ({ movement: [dx, dy] }) =>
+        setCrop((crop) => ({ ...crop, x: dx, y: dy })),
+      onPinch: ({ offset: [d] }) =>
+        setCrop((crop) => ({ ...crop, scale: 1 + d / 50 })),
+      onDragEnd: () => {
+        if (!imageRef.current || !imgContainer.current) return null;
+        let newCrop = crop;
+        let imageBounds = imageRef.current.getBoundingClientRect();
+        let containerBounds = imgContainer.current.getBoundingClientRect();
+
+        if (imageBounds.left > containerBounds.left) {
+          newCrop.x = 0;
+        } else if (imageBounds.right < containerBounds.right) {
+          newCrop.x = -(imageBounds.width - containerBounds.width);
+        }
+
+        if (imageBounds.top > containerBounds.top) {
+          newCrop.y = 0;
+        } else if (imageBounds.bottom < containerBounds.bottom) {
+          newCrop.y = -(imageBounds.height - containerBounds.height);
+        }
+        setCrop({ ...newCrop });
+      },
+    },
+
+    {
+      drag: {},
+      target: imageRef,
+      eventOptions: { passive: false },
+    }
+  );
   return (
     <>
       <section>
@@ -16,9 +55,15 @@ const ProductPreview = () => {
           <div className="product-details-top">
             <div className="product-gallery-container">
               <div className="product-gallery">
-                <figure className="product-main-img">
+                <figure ref={imgContainer} className="product-main-img">
                   <span className="product-label">Top</span>
                   <img
+                    style={{
+                      left: crop.x,
+                      top: crop.y,
+                      transform: `scale(${crop.scale})`,
+                    }}
+                    ref={imageRef}
                     src="https://d-themes.com/react_asset_api/molla/uploads/product_1_1_45e247fd69.jpg"
                     alt=""
                   />
