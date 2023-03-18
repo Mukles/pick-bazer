@@ -1,0 +1,31 @@
+.product-quick-review {
+  padding: 30px 20px;
+  background-color: var(--white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
+  max-width: 1000px;
+  border-radius: 6px;
+
+  .product-details-top {
+    .product-gallery-container {
+      flex-direction: column;
+
+      .product-gallery {
+        flex: 0 0 100%;
+      }
+    }
+    .product-zoom-gallery {
+      flex-direction: row;
+    }
+
+    .product-gallery-container .product-zoom-gallery {
+      display: flex;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}

@@ -81,12 +81,37 @@ ol {
   }
 }
 
-.mobile-overlay {
+.mobile-overlay,
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100dvh;
+  padding: 20px;
   background-color: hsla(0, 0, 0, 0.8);
   z-index: -10;
+}
+
+.overlay {
+  z-index: 30;
+  background-color: rgba(51, 51, 51, 0.6);
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .modal-close {
+    @include reset-button;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: transparent;
+  }
 }

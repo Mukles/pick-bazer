@@ -1,6 +1,7 @@
 .product-details-top {
   display: flex;
   margin-bottom: 20px;
+  align-items: flex-start;
 
   @media (max-width: $sm) {
     flex-direction: column;
@@ -99,14 +100,16 @@
       display: inline-block;
       padding-right: 12px;
 
+      li {
+        flex: 0 0 25%;
+        max-width: 25%;
+        padding-inline: 10px;
+      }
+
       @media (max-width: $sm) {
         flex: 0 0 100%;
         max-width: 100%;
         display: flex;
-
-        li:not(:last-child) {
-          margin-right: 12px;
-        }
       }
 
       button {
@@ -116,10 +119,6 @@
         &.active {
           border: 1px solid var(--yellow);
         }
-      }
-
-      li:not(:last-child) {
-        margin-bottom: 12px;
       }
     }
   }

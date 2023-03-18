@@ -6,10 +6,11 @@ import {
 } from "@heroicons/react/24/outline";
 import { useRef, useState } from "react";
 import SocalLinks from "../../helpers/socail-links";
-import ProductMoreDetails from "./porduct-more-details";
-import ProductSuggestion from "./product-suggestion";
 
-const ProductPreview = () => {
+interface Props {
+  children?: React.ReactNode;
+}
+const ProductPreview = ({ children }: Props) => {
   const imageRef = useRef<HTMLImageElement>(null);
   const imgContainer = useRef<HTMLElement>(null);
   const [selectedImg, setSelectedImg] = useState(
@@ -40,6 +41,7 @@ const ProductPreview = () => {
       0,
       Math.max(rect.width - zoomWidth, -(offsetX * (zoomWidth - rect.width)))
     );
+
     const translateY = Math.min(
       0,
       Math.max(
@@ -193,8 +195,6 @@ const ProductPreview = () => {
           </div>
         </div>
       </section>
-      <ProductMoreDetails />
-      <ProductSuggestion />
     </>
   );
 };

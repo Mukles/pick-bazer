@@ -2,7 +2,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useRoutes } from "react-router-dom";
 import Sidebar from "./Components/header/Sidebar";
+import ProductMoreDetails from "./Components/product/porduct-more-details";
 import ProductPreview from "./Components/product/product-preview";
+import ProductSuggestion from "./Components/product/product-suggestion";
 import HomeLayout from "./layout/homeLayout";
 import Cart from "./pages/cart";
 import Home from "./pages/home";
@@ -49,7 +51,12 @@ function App() {
         },
         {
           path: "product/:name",
-          element: <ProductPreview />,
+          element: (
+            <ProductPreview>
+              <ProductMoreDetails />
+              <ProductSuggestion />
+            </ProductPreview>
+          ),
         },
       ],
     },
@@ -77,7 +84,10 @@ function App() {
             )}
           </AnimatePresence>
         </div>
-        <div> {element}</div>
+        <div>
+          {element}
+          <div className="modal"></div>
+        </div>
       </div>
     );
   }
