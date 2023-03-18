@@ -4,7 +4,6 @@ import {
   StarIcon,
   TableCellsIcon,
 } from "@heroicons/react/24/outline";
-import { useGesture } from "@use-gesture/react";
 import { useRef, useState } from "react";
 import SocalLinks from "../../helpers/socail-links";
 import ProductMoreDetails from "./porduct-more-details";
@@ -13,41 +12,57 @@ import ProductSuggestion from "./product-suggestion";
 const ProductPreview = () => {
   const imageRef = useRef<HTMLImageElement>(null);
   const imgContainer = useRef<HTMLElement>(null);
-  const [crop, setCrop] = useState({ x: 0, y: 0, scale: 1 });
-
-  useGesture(
-    {
-      onDrag: ({ movement: [dx, dy] }) =>
-        setCrop((crop) => ({ ...crop, x: dx, y: dy })),
-      onPinch: ({ offset: [d] }) =>
-        setCrop((crop) => ({ ...crop, scale: 1 + d / 50 })),
-      onDragEnd: () => {
-        if (!imageRef.current || !imgContainer.current) return null;
-        let newCrop = crop;
-        let imageBounds = imageRef.current.getBoundingClientRect();
-        let containerBounds = imgContainer.current.getBoundingClientRect();
-
-        if (imageBounds.left > containerBounds.left) {
-          newCrop.x = 0;
-        } else if (imageBounds.right < containerBounds.right) {
-          newCrop.x = -(imageBounds.width - containerBounds.width);
-        }
-
-        if (imageBounds.top > containerBounds.top) {
-          newCrop.y = 0;
-        } else if (imageBounds.bottom < containerBounds.bottom) {
-          newCrop.y = -(imageBounds.height - containerBounds.height);
-        }
-        setCrop({ ...newCrop });
-      },
-    },
-
-    {
-      drag: {},
-      target: imageRef,
-      eventOptions: { passive: false },
-    }
+  const [selectedImg, setSelectedImg] = useState(
+    "https://d-themes.com/react_asset_api/molla/uploads/product_1_1_45e247fd69.jpg"
   );
+  const productImages = [
+    "https://d-themes.com/react_asset_api/molla/uploads/product_1_1_45e247fd69.jpg",
+    "https://d-themes.com/react_asset_api/molla/uploads/product_1_1_e4d26c1a1a.jpg",
+    "https://d-themes.com/react_asset_api/molla/uploads/product_1_2_a7c10bc1b6.jpg",
+  ];
+  const onPointerHandler = (e: any) => {
+    const img = imageRef.current;
+    const container = imgContainer.current;
+    if (!img || !container) return null;
+
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const offsetX = (x - img.offsetLeft) / img.width;
+    const offsetY = (y - img.offsetTop) / img.height;
+
+    const zoomFactor = 2;
+    const zoomWidth = rect.width / zoomFactor;
+    const zoomHeight = rect.height / zoomFactor;
+
+    const translateX = Math.min(
+      0,
+      Math.max(rect.width - zoomWidth, -(offsetX * (zoomWidth - rect.width)))
+    );
+    const translateY = Math.min(
+      0,
+      Math.max(
+        rect.height - zoomHeight,
+        -(offsetY * (zoomHeight - rect.height))
+      )
+    );
+
+    img.style.transition = "0s";
+    img.style.transformOrigin = `${x}px ${y}px`;
+    img.style.transform = `scale(${zoomFactor}) translate(${translateX}px, ${translateY}px)`;
+  };
+
+  const onPointerLeaveHandler = (e: any) => {
+    const img = imageRef.current;
+    const container = imgContainer.current;
+    if (!img || !container) return null;
+    img.style.transition = "0.3s";
+    img.style.transform = `scale(${1}) translate(${0}px, ${0}px)`;
+  };
+
+  const onSelectChange = (image: string) => setSelectedImg(image);
+
   return (
     <>
       <section>
@@ -58,50 +73,25 @@ const ProductPreview = () => {
                 <figure ref={imgContainer} className="product-main-img">
                   <span className="product-label">Top</span>
                   <img
-                    style={{
-                      left: crop.x,
-                      top: crop.y,
-                      transform: `scale(${crop.scale})`,
-                    }}
+                    onPointerMove={onPointerHandler}
+                    onPointerLeave={onPointerLeaveHandler}
                     ref={imageRef}
-                    src="https://d-themes.com/react_asset_api/molla/uploads/product_1_1_45e247fd69.jpg"
+                    src={selectedImg}
                     alt=""
                   />
                 </figure>
               </div>
               <ul className="product-zoom-gallery">
-                <li>
-                  <button className="active">
-                    <img
-                      src="https://d-themes.com/react_asset_api/molla/uploads/product_1_1_45e247fd69.jpg"
-                      alt=""
-                    />
-                  </button>
-                </li>
-                <li>
-                  <button>
-                    <img
-                      src="https://d-themes.com/react_asset_api/molla/uploads/product_1_1_45e247fd69.jpg"
-                      alt=""
-                    />
-                  </button>
-                </li>
-                <li>
-                  <button>
-                    <img
-                      src="https://d-themes.com/react_asset_api/molla/uploads/product_1_1_45e247fd69.jpg"
-                      alt=""
-                    />
-                  </button>
-                </li>
-                <li>
-                  <button>
-                    <img
-                      src="https://d-themes.com/react_asset_api/molla/uploads/product_1_1_45e247fd69.jpg"
-                      alt=""
-                    />
-                  </button>
-                </li>
+                {productImages.map((image, i) => (
+                  <li key={i}>
+                    <button
+                      onClick={() => onSelectChange(image)}
+                      className={image === selectedImg ? "active" : ""}
+                    >
+                      <img src={image} alt="" />
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="entry-summary">
