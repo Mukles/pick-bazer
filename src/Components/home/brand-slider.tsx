@@ -1,24 +1,12 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import brand1 from "../../assets/img/brands/1.png";
+import { useDragConstraints } from "../../hooks/useDragConstraints";
 
 export const BrandSlider = () => {
   const contianerRef = useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState<Number>(0);
-
-  const handleResize = () => {
-    if (!contianerRef.current) return null;
-    setWidth(
-      contianerRef.current.scrollWidth - contianerRef.current.offsetWidth
-    );
-  };
-
-  useEffect(() => {
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return window.removeEventListener("resize", handleResize);
-  }, []);
+  const width = useDragConstraints({ target: contianerRef });
 
   return (
     <motion.div ref={contianerRef} style={{ overflow: "hidden" }}>

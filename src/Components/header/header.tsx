@@ -5,8 +5,11 @@ import {
   ShoppingCartIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
+import { useViewportScroll } from "framer-motion";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
+import { navs } from "../../data/home/navs";
 import CustomeSelect from "../../helpers/custom-select";
 import { useWindowSize } from "../../hooks/useWidth";
 import CartList from "../cart/cartList";
@@ -85,74 +88,58 @@ const TopHeader = () => {
 
 const Header = ({ setOpen }: Props) => {
   const navigate = useNavigate();
+  const { scrollY } = useViewportScroll();
+
+  const [isFixied, setFixied] = useState(false);
   const onClose = () => {
     setOpen((open: boolean) => !open);
   };
+
+  scrollY.onChange((y) => {
+    y > 250 ? setFixied(true) : setFixied(false);
+  });
+
   return (
     <header>
       <div className="container">
         <TopHeader />
+      </div>
 
-        <div className="main-header">
-          <div className="header-left">
-            <button onClick={onClose} type="button" className="nav-toggler">
-              <i className="fa fa-bars nav-toggler-icon"></i>
-            </button>
-            <Link to={"/"}>
-              <img src={logo} alt="brand-logo" />
-            </Link>
-            <ul>
-              <li>
-                <Link to={"/"}>
-                  <span>Home</span>
-                  <ChevronDownIcon />
-                </Link>
-              </li>
-              <li>
-                <Link to={"/"}>
-                  <span>Home</span>
-                  <ChevronDownIcon />
-                </Link>
-              </li>
-              <li>
-                <Link to={"/"}>
-                  <span>Home</span>
-                  <ChevronDownIcon />
-                </Link>
-              </li>
-              <li>
-                <Link to={"/"}>
-                  <span>Home</span>
-                  <ChevronDownIcon />
-                </Link>
-              </li>
-              <li>
-                <Link to={"/"}>
-                  <span>Home</span>
-                  <ChevronDownIcon />
-                </Link>
-              </li>
-              <li>
-                <Link to={"/"}>
-                  <span>Home</span>
-                  <ChevronDownIcon />
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="header-right">
-            <ul>
-              <li className="search-wrapper">
-                <Search />
-              </li>
-              <li className="cart-dropdown">
-                <button onClick={() => navigate("/shop/cart")}>
-                  <ShoppingCartIcon />
-                  <span className="cart-count">0</span>
-                </button>
-                <CartList />
-              </li>
-            </ul>
+      <div className={`main-header-wrapper ${isFixied ? "fixed" : ""}`}>
+        <div className="container">
+          <div className="main-header">
+            <div className="header-left">
+              <button onClick={onClose} type="button" className="nav-toggler">
+                <i className="fa fa-bars nav-toggler-icon"></i>
+              </button>
+              <Link to={"/"}>
+                <img src={logo} alt="brand-logo" />
+              </Link>
+              <ul>
+                {navs.map((nav) => (
+                  <li key={nav.id}>
+                    <Link to={nav.link}>
+                      <span>{nav.text}</span>
+                      {false && <ChevronDownIcon />}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="header-right">
+              <ul>
+                <li className="search-wrapper">
+                  <Search />
+                </li>
+                <li className="cart-dropdown">
+                  <button onClick={() => navigate("/shop/cart")}>
+                    <ShoppingCartIcon />
+                    <span className="cart-count">0</span>
+                  </button>
+                  <CartList />
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

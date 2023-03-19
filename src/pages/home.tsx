@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import banner1 from "../assets/img/home/banner/intro/banner-1.jpg";
 import Blog from "../Components/home/blog";
 import { BrandSlider } from "../Components/home/brand-slider";
+import RecentProduct from "../Components/home/recent-product";
 import Service from "../Components/home/service-list";
 import ShopByCatagory from "../Components/home/shop-by-catagory";
 import TrendyProduct from "../Components/home/trendy-product";
@@ -52,8 +53,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       <TrendyProduct />
+      <RecentProduct />
       <ShopByCatagory />
       <Service />
       <Blog />

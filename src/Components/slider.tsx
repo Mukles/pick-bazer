@@ -1,11 +1,12 @@
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 import { motion, PanInfo, useAnimation } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import banner1 from "../assets/img/home/slider/slide-1-1.png";
 import slide1 from "../assets/img/home/slider/slide-1.png";
 import banner2 from "../assets/img/home/slider/slide-2-1.png";
 import slide2 from "../assets/img/home/slider/slide-2.png";
+import { useDragConstraints } from "../hooks/useDragConstraints";
 
 const sliderItems = [
   {
@@ -30,20 +31,7 @@ const Slider = () => {
   const LEFT_OFFSET = -100;
   const controls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
-  const [width, setwidth] = useState(0);
-
-  const resizeHandler = () => {
-    if (!containerRef.current?.scrollWidth) return;
-    setwidth(
-      containerRef.current.scrollWidth - containerRef.current.offsetWidth
-    );
-  };
-
-  useEffect(() => {
-    resizeHandler();
-    window.addEventListener("resize", resizeHandler);
-    window.removeEventListener("resize", resizeHandler);
-  }, []);
+  const width = useDragConstraints({ target: containerRef });
 
   const handlePanEnd = async (event: any, info: PanInfo) => {
     const x = info.offset.x;

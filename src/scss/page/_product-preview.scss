@@ -66,10 +66,11 @@
         height: 100%;
         touch-action: none;
         transition: 0.3s;
-        cursor: all-scroll;
+        cursor: zoom-in;
 
         &:hover {
           transform: scale(2);
+          cursor: all-scroll;
         }
       }
 
