@@ -31,7 +31,7 @@ const Slider = () => {
   const LEFT_OFFSET = -100;
   const controls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
-  const width = useDragConstraints({ target: containerRef });
+  let width = useDragConstraints({ target: containerRef });
 
   const handlePanEnd = async (event: any, info: PanInfo) => {
     const x = info.offset.x;
