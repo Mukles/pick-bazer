@@ -1,5 +1,6 @@
 .trendy-collention {
   overflow: hidden;
+  cursor: grab;
 }
 
 .bulets {
@@ -10,20 +11,15 @@
 
   li {
     position: relative;
-    padding: 5px;
+    margin: 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid #d7d7d7;
 
-    &::before {
-      content: "";
-      display: block;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: transparent;
-      cursor: pointer;
-      border: 1px solid #d7d7d7;
-    }
-
-    &.active::before {
+    &.active {
       width: 18px;
       background-color: #ccc;
       border-color: #ccc;

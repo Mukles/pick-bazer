@@ -1,5 +1,5 @@
-import { motion, useAnimation } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, PanInfo, useAnimation } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { tabs } from "../../data/home/tabs";
 import TabPills from "../../helpers/tab-pills";
 import { useBoulet } from "../../hooks/useBolute";
@@ -7,22 +7,45 @@ import { useDragConstraints } from "../../hooks/useDragConstraints";
 import Product from "../product";
 
 const TrendyProduct = () => {
-  const produtLength = 10;
+  const produtLength = 7;
+  let itemPerPage = useBoulet();
   const controls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWdith] = useState(0);
   const [selectedBulet, setSelectedBulet] = useState(0);
   let width = useDragConstraints({ target: containerRef });
-  let itemPerPage = useBoulet();
   const sizeOfbulet = Math.ceil(produtLength / itemPerPage);
+  const cardWidth = containerWidth / produtLength;
 
-  const onBuletClick = (pageNumber: number) => {
-    console.log(pageNumber);
-    console.log({ width });
-    const cardWidth = width / produtLength;
-    const x = pageNumber === 0 ? "0%" : "-100%";
-    console.log({ x });
+  const translateXForElement = (element: HTMLDivElement) => {
+    const transform = element.style.transform;
+    if (!transform || transform.indexOf("translateX(") < 0) {
+      return 0;
+    }
 
-    controls.start({ x });
+    const extractTranslateX = transform.match(/translateX\((-?\d+)/);
+    return extractTranslateX && extractTranslateX.length === 2
+      ? parseInt(extractTranslateX[1], 10)
+      : 0;
+  };
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    setContainerWdith(containerRef.current.scrollWidth);
+  }, []);
+
+  const onBuletClick = async (pageNumber: number) => {
+    let x = -(cardWidth * pageNumber * itemPerPage);
+    setSelectedBulet(pageNumber);
+    await controls.start({ x });
+  };
+
+  const onDragEndHandler = (event: any, info: PanInfo) => {
+    if (!containerRef.current) return;
+    const element = containerRef.current.querySelector("div");
+    const xPos = translateXForElement(element as HTMLDivElement);
+    const boulet = Math.round(Math.abs(xPos) / (cardWidth * itemPerPage));
+    setSelectedBulet(boulet);
   };
 
   return (
@@ -33,12 +56,20 @@ const TrendyProduct = () => {
           <TabPills tabsList={tabs} />
           <div ref={containerRef} className="trendy-collention">
             <motion.div
+              onDrag={onDragEndHandler}
               drag="x"
               animate={controls}
+              dragMomentum={false}
               dragElastic={0.1}
               dragConstraints={{ right: 0, left: -width }}
+              dragTransition={{
+                bounceStiffness: 400,
+                timeConstant: 900,
+                min: 200,
+                max: 500,
+              }}
+              transition={{ duration: 0.3 }}
               className="product-container trendy"
-              transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
             >
               {[...Array(produtLength)].map((item, i) => (
                 <Product i={i + 1} key={i} />
@@ -48,11 +79,13 @@ const TrendyProduct = () => {
 
           <ul className="bulets">
             {[...Array(sizeOfbulet)].map((_, i) => (
-              <li
+              <motion.li
+                animate={{ width: selectedBulet === i ? 16 : 8 }}
+                transition={{ duration: 0.1 }}
                 onClick={() => onBuletClick(i)}
                 key={i}
                 className={`${i === selectedBulet ? "active" : ""}`}
-              ></li>
+              ></motion.li>
             ))}
           </ul>
         </div>

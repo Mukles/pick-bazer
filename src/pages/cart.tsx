@@ -22,8 +22,8 @@ const Cart = () => {
               </tr>
             </thead>
             <tbody>
-              {[...Array(10)].map((item) => (
-                <tr>
+              {[...Array(10)].map((item, i) => (
+                <tr key={i}>
                   <td>
                     <div className="product-cart">
                       <figure className="product-media">
