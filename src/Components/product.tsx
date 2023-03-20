@@ -8,9 +8,9 @@ import QuickPreview from "./product/quic-preview";
 
 interface Props {
   className?: string;
+  i?: number;
 }
-
-const Product = ({ className }: Props) => {
+const Product = ({ className, i }: Props) => {
   const [quickreview, setQuickReview] = useState(false);
   const onChangeReview = () => setQuickReview((quickreview) => !quickreview);
 
@@ -81,7 +81,7 @@ const Product = ({ className }: Props) => {
             ) : (
               <>
                 <div className="product-catagory">
-                  <Link to={"/"}>Furniture</Link>
+                  <Link to={"/"}>Furniture {i}</Link>
                 </div>
                 <div className="product-title">
                   <Link to={"/"}>2-Seater</Link>

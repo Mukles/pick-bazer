@@ -1,6 +1,7 @@
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
-import { motion, PanInfo, useAnimation } from "framer-motion";
-import { useRef } from "react";
+import { motion, PanInfo } from "framer-motion";
+import clamp from "lodash/clamp";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import banner1 from "../assets/img/home/slider/slide-1-1.png";
 import slide1 from "../assets/img/home/slider/slide-1.png";
@@ -28,19 +29,17 @@ const sliderItems = [
 ];
 
 const Slider = () => {
-  const LEFT_OFFSET = -100;
-  const controls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
   let width = useDragConstraints({ target: containerRef });
+  const [active, setActive] = useState(0);
 
-  const handlePanEnd = async (event: any, info: PanInfo) => {
-    const x = info.offset.x;
-    if (x < LEFT_OFFSET && x < 0) {
-      await controls.start({
-        x: "-50%",
-      });
-    } else {
-      await controls.start({ x: 0 });
+  const dragEndHandler = (event: any, info: PanInfo) => {
+    const offset = info.offset.x;
+    if (Math.abs(offset) > 20) {
+      const direction = offset < 0 ? 1 : -1;
+      setActive((active) =>
+        clamp(active + direction, 0, sliderItems.length - 1)
+      );
     }
   };
 
@@ -51,8 +50,10 @@ const Slider = () => {
         dragElastic={0.1}
         dragMomentum={false}
         dragConstraints={{ right: 0, left: -width }}
-        onPanEnd={handlePanEnd}
-        animate={controls}
+        onPanEnd={dragEndHandler}
+        animate={{
+          x: -1 * active * width,
+        }}
         transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
       >
         {sliderItems.map(({ background, slide, banner, margin }, i) => {
