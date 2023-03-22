@@ -6,6 +6,7 @@ import ProductMoreDetails from "./Components/product/porduct-more-details";
 import ProductPreview from "./Components/product/product-preview";
 import ProductSuggestion from "./Components/product/product-suggestion";
 import HomeLayout from "./layout/homeLayout";
+import Blog from "./pages/blog";
 import Cart from "./pages/cart";
 import Home from "./pages/home";
 import ShopList from "./pages/shop-list";
@@ -57,6 +58,10 @@ function App() {
               <ProductSuggestion />
             </ProductPreview>
           ),
+        },
+        {
+          path: "/blog",
+          element: <Blog />,
         },
       ],
     },
