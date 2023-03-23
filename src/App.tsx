@@ -5,6 +5,7 @@ import Sidebar from "./Components/header/Sidebar";
 import ProductMoreDetails from "./Components/product/porduct-more-details";
 import ProductPreview from "./Components/product/product-preview";
 import ProductSuggestion from "./Components/product/product-suggestion";
+import BlogLayout from "./layout/blogLayout";
 import HomeLayout from "./layout/homeLayout";
 import Blog from "./pages/blog";
 import Cart from "./pages/cart";
@@ -60,8 +61,18 @@ function App() {
           ),
         },
         {
-          path: "/blog",
-          element: <Blog />,
+          path: "/blogs",
+          element: <BlogLayout />,
+          children: [
+            {
+              index: true,
+              element: <Blog />,
+            },
+            {
+              path: ":id",
+              element: <Blog />,
+            },
+          ],
         },
       ],
     },
