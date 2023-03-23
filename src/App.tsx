@@ -8,6 +8,7 @@ import ProductSuggestion from "./Components/product/product-suggestion";
 import BlogLayout from "./layout/blogLayout";
 import HomeLayout from "./layout/homeLayout";
 import Blog from "./pages/blog";
+import SingleBlog from "./pages/blog/single-blog";
 import Cart from "./pages/cart";
 import Home from "./pages/home";
 import ShopList from "./pages/shop-list";
@@ -70,7 +71,7 @@ function App() {
             },
             {
               path: ":id",
-              element: <Blog />,
+              element: <SingleBlog />,
             },
           ],
         },

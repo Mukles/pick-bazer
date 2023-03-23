@@ -136,6 +136,64 @@
       p {
         padding-block: 15px;
       }
+
+      img {
+        float: left;
+        margin-right: 2.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h3 {
+        font-size: 24px;
+        line-height: 26px;
+        color: var(--semi-black);
+        font-weight: 400;
+      }
+
+      li {
+        font-size: 14px;
+        line-height: 26px;
+        color: #666;
+        font-weight: 300;
+        margin-top: 20px;
+
+        &::before {
+          content: "";
+          transform: translateY(-2px);
+          display: inline-block;
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background-color: #666;
+          margin-right: 12px;
+        }
+      }
+
+      blockquote {
+        position: relative;
+        color: var(--semi-black);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 23px;
+        padding: 26px 80px 25px;
+        border-left: 1px solid #c96;
+        background-color: #fafafa;
+        margin-top: 40px;
+        margin-bottom: 45px;
+
+        &::before {
+          color: rgb(235, 235, 235);
+          content: ",,";
+          font-weight: 400;
+          font-size: 70px;
+          font-family: molla;
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 20px;
+          margin-top: -36px;
+        }
+      }
     }
   }
 
