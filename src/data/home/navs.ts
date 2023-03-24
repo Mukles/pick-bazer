@@ -14,15 +14,11 @@ export const navs: navTypes[] = [
   {
     id: 2,
     text: "Shop",
-    link: "/shop",
+    link: "/shop/list",
   },
+
   {
     id: 3,
-    text: "Product",
-    link: "/product",
-  },
-  {
-    id: 4,
     text: "Blogs",
     link: "/blogs",
   },

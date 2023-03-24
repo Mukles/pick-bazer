@@ -18,7 +18,7 @@ const Blog = () => {
                 <article key={i}>
                   <div className="blog-item">
                     <figure className="entry-media">
-                      <Link to={"/"}>
+                      <Link to={"/blogs/1"}>
                         <img src={blog1} alt="blog-img" />
                       </Link>
                     </figure>
@@ -40,7 +40,7 @@ const Blog = () => {
                           necurna.
                         </p>
 
-                        <Link to={"/"} className="read-more">
+                        <Link to={"/blogs/1"} className="read-more">
                           Read More
                         </Link>
                       </div>
@@ -51,7 +51,7 @@ const Blog = () => {
             }
           })}
         </div>
-        <Link className="more-container" to="/">
+        <Link className="more-container" to="/blogs">
           <span>View more articles</span>
           <ArrowLongRightIcon />
         </Link>

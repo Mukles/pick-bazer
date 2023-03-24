@@ -13,6 +13,7 @@ export const useDragConstraints = ({ target }: Props): number => {
       if (!element) return;
       setWidth(element.scrollWidth - element.offsetWidth);
     };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);

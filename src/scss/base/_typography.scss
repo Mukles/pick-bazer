@@ -117,6 +117,15 @@ ol {
   }
 }
 
+.title {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--semi-black);
+  margin-top: 45px;
+  margin-bottom: 30px;
+}
+
 .clear-fix {
   display: block;
   clear: both;
