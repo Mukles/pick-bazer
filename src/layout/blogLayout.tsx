@@ -124,11 +124,21 @@ const BlogLayout = () => {
               <div className="widget">
                 <div className="widget-title">Browse Tags</div>
                 <div className="browser-tags">
-                  <Link to={"/"}>fashion</Link>
-                  <Link to={"/"}>style</Link>
-                  <Link to={"/"}>women</Link>
-                  <Link to={"/"}>photography</Link>
-                  <Link to={"/"}>travel</Link>
+                  <Link className="tag" to={"/"}>
+                    fashion
+                  </Link>
+                  <Link className="tag" to={"/"}>
+                    style
+                  </Link>
+                  <Link className="tag" to={"/"}>
+                    women
+                  </Link>
+                  <Link className="tag" to={"/"}>
+                    photography
+                  </Link>
+                  <Link className="tag" to={"/"}>
+                    travel
+                  </Link>
                 </div>
               </div>
               <div className="widget">

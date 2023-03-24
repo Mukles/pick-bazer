@@ -1,5 +1,9 @@
-import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowLongLeftIcon,
+  ArrowLongRightIcon,
+} from "@heroicons/react/24/outline";
 import { Link, useParams } from "react-router-dom";
+import RealtedPostRow from "./related-post-row";
 
 const BlogItem = () => {
   const { id } = useParams();
@@ -151,6 +155,79 @@ const BlogItem = () => {
             </Link>
           )}
         </div>
+
+        {id && (
+          <>
+            <div className="entry-fotter">
+              <span>Tags:</span>
+              <Link to="/" className="tag">
+                fashion
+              </Link>
+              <Link to="/" className="tag">
+                fashion
+              </Link>
+              <Link to="/" className="tag">
+                fashion
+              </Link>
+              <Link to="/" className="tag">
+                fashion
+              </Link>
+            </div>
+
+            <div className="entry-author-details">
+              <figure className="author-media">
+                <Link to={"/"}>
+                  <img
+                    src="https://d-themes.com/react/molla/demo-2/images/blog/single/author.jpg"
+                    alt=""
+                  />
+                </Link>
+              </figure>
+              <div className="author-body">
+                <div className="author-header">
+                  <Link to="/">John Doe</Link>
+                  <Link className="author-link" to={"/"}>
+                    View all posts by John Doe
+                    <span>
+                      <ArrowLongRightIcon />
+                    </span>
+                  </Link>
+                </div>
+
+                <div className="author-content">
+                  <p>
+                    Praesent dapibus, neque id cursus faucibus, tortor neque
+                    egestas auguae, eu vulputate magna eros eu erat. Aliquam
+                    erat volutpat.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="page-nav">
+              <Link className="prev" to={"/"}>
+                <button>
+                  <ArrowLongLeftIcon />
+                </button>
+                <button>
+                  <span>Previous Post</span>
+                  <span>Cras ornare tristique elit.</span>
+                </button>
+              </Link>
+              <Link className="next" to={"/"}>
+                <button>
+                  <span>Next Post</span>
+                  <span>Cras ornare tristique elit.</span>
+                </button>
+                <button>
+                  <ArrowLongRightIcon />
+                </button>
+              </Link>
+            </div>
+
+            <RealtedPostRow />
+          </>
+        )}
       </div>
     </article>
   );
