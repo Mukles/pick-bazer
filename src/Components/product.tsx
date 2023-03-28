@@ -41,10 +41,10 @@ const Product = ({ className, i }: Props) => {
             {!className?.includes("product-list") && (
               <div className="product-vertical-action">
                 <Link className="btn-wishlist" to={"/"}>
-                  <span>add to wishlist</span>
                   <span className="icon">
                     <HeartIcon />
                   </span>
+                  <span>add to wishlist</span>
                 </Link>
 
                 <Link

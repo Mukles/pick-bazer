@@ -79,35 +79,45 @@
   transition: right 0.3s ease-in-out;
 
   a {
-    display: block;
+    display: flex;
+    align-items: center;
     font-size: 11px;
     line-height: 30px;
     font-weight: 300;
     border-radius: 12px;
     transition: 0.3s;
 
-    span {
-      &:first-child {
-        position: absolute;
-        background: red;
-        top: 0;
-        left: -77px;
-        display: block;
-        border-top-left-radius: 12px;
-        border-bottom-left-radius: 12px;
-        opacity: 1;
-        padding-left: 8px;
-        display: block;
-        opacity: 0;
-        visibility: hidden;
+    &.btn-wishlist {
+      flex-direction: row-reverse;
+      position: relative;
+      z-index: 20;
+
+      span:not(.icon) {
+        transition: all 0.35s ease;
+        display: none;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 0%;
+          height: 100%;
+          background-color: transparent;
+          z-index: -1;
+          border-radius: 12px;
+          transition: 0.3s;
+        }
       }
 
-      font-size: 11px;
-      line-height: 30px;
-      font-weight: 300;
-      display: inline-block;
-      opacity: 0;
-      transition: 0.5s;
+      .icon:hover + span {
+        display: block;
+
+        &::after {
+          width: 100%;
+          background-color: var(--yellow);
+        }
+      }
     }
 
     .icon {

@@ -5,19 +5,20 @@ interface Props {
 }
 
 export const useDragConstraints = ({ target }: Props): number => {
-  const element = target.current;
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
+    const element = target.current;
     const handleResize = () => {
       if (!element) return;
+      console.log(element.scrollWidth)
       setWidth(element.scrollWidth - element.offsetWidth);
     };
 
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [element]);
+  }, [target]);
 
   return width;
 };

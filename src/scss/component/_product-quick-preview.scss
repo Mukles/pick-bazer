@@ -1,6 +1,6 @@
 .product-quick-review {
-  margin: 50px;
-  padding: 30px 20px;
+  padding: 25px 20px;
+  padding-bottom: 0;
   background-color: var(--white);
   position: absolute;
   top: 50%;
@@ -10,7 +10,28 @@
   height: auto;
   max-width: 1000px;
   border-radius: 6px;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
 
+  @media (max-width: $md) {
+    max-width: 90%;
+    height: 96dvh;
+  }
+
+  &:hover ::-webkit-scrollbar {
+    width: 20px;
+    display: block;
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #acacbe;
+    border-radius: 8px;
+  }
   .product-details-top {
     .product-gallery-container {
       flex-direction: column;
