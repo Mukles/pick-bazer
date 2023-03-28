@@ -48,7 +48,7 @@ const ShopList = () => {
       <div className="container">
         <div className="shop-products">
           <aside>
-            <div className="widget">
+            <div className="widget widget-shop">
               <div className=" widget-button">
                 <p>Filters</p>
                 <p>Clean All</p>

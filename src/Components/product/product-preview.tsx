@@ -195,6 +195,7 @@ const ProductPreview = ({ children }: Props) => {
           </div>
         </div>
       </section>
+      {children}
     </>
   );
 };

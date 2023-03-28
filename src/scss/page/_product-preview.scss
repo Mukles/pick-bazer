@@ -1,6 +1,6 @@
 .product-details-top {
   display: flex;
-  margin-bottom: 20px;
+  margin: 20px 0;
   align-items: flex-start;
 
   @media (max-width: $sm) {
@@ -102,8 +102,7 @@
       padding-right: 12px;
 
       li {
-        flex: 0 0 25%;
-        max-width: 25%;
+        width: 100%;
         padding-inline: 10px;
       }
 
@@ -116,8 +115,10 @@
       button {
         border: none;
         cursor: pointer;
+        opacity: 0.5;
 
         &.active {
+          opacity: 1;
           border: 1px solid var(--yellow);
         }
       }
