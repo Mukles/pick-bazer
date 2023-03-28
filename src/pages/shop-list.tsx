@@ -1,6 +1,4 @@
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import {
   DefaultGrid,
   FourByTwo,
@@ -8,6 +6,7 @@ import {
   TwoByTwo,
 } from "../Components/icons/GridIcons";
 import Product from "../Components/product";
+import Widget from "../Components/widget";
 import ProductHeader from "../helpers/product-header";
 import ProductNavbar from "../helpers/product-navbar";
 
@@ -50,86 +49,22 @@ const ShopList = () => {
         <div className="shop-products">
           <aside>
             <div className="widget">
-              <p>Filters</p>
-              <p>Clean All</p>
+              <div className=" widget-button">
+                <p>Filters</p>
+                <p>Clean All</p>
+              </div>
             </div>
 
             <div className="widget-collapsible">
-              <button type="button" className="widget-button">
-                <h4>Category</h4>
-                <ChevronDownIcon />
-              </button>
-
-              <ul className="widget-body">
-                <li className="filter-item">
-                  <Link to={"/"}>Furniture</Link>
-                  <span className="item-count">8</span>
-                </li>
-                <li className="filter-item">
-                  <Link to={"/"}>Furniture</Link>
-                  <span className="item-count">8</span>
-                </li>
-                <li className="filter-item">
-                  <Link to={"/"}>Furniture</Link>
-                  <span className="item-count">8</span>
-                </li>
-                <li className="filter-item">
-                  <Link to={"/"}>Furniture</Link>
-                  <span className="item-count">8</span>
-                </li>
-              </ul>
+              <Widget />
             </div>
 
             <div className="widget-collapsible">
-              <button type="button" className="widget-button">
-                <h4>Category</h4>
-                <ChevronDownIcon />
-              </button>
-
-              <ul className="widget-body">
-                <li className="filter-item">
-                  <Link to={"/"}>Furniture</Link>
-                  <span className="item-count">8</span>
-                </li>
-                <li className="filter-item">
-                  <Link to={"/"}>Furniture</Link>
-                  <span className="item-count">8</span>
-                </li>
-                <li className="filter-item">
-                  <Link to={"/"}>Furniture</Link>
-                  <span className="item-count">8</span>
-                </li>
-                <li className="filter-item">
-                  <Link to={"/"}>Furniture</Link>
-                  <span className="item-count">8</span>
-                </li>
-              </ul>
+              <Widget />
             </div>
 
             <div className="widget-collapsible">
-              <button type="button" className="widget-button">
-                <h4>Category</h4>
-                <ChevronDownIcon />
-              </button>
-
-              <ul className="widget-body">
-                <li className="filter-item">
-                  <Link to={"/"}>Furniture</Link>
-                  <span className="item-count">8</span>
-                </li>
-                <li className="filter-item">
-                  <Link to={"/"}>Furniture</Link>
-                  <span className="item-count">8</span>
-                </li>
-                <li className="filter-item">
-                  <Link to={"/"}>Furniture</Link>
-                  <span className="item-count">8</span>
-                </li>
-                <li className="filter-item">
-                  <Link to={"/"}>Furniture</Link>
-                  <span className="item-count">8</span>
-                </li>
-              </ul>
+              <Widget />
             </div>
           </aside>
           <main>

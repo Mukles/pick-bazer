@@ -1,9 +1,13 @@
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
-const Widget = () => {
+interface Props {
+  collapsible?: boolean;
+}
+
+const Widget = ({ collapsible }: Props) => {
   return (
-    <div className="widget">
+    <div className={`widget ${collapsible ? "widget-collapsible" : ""}`}>
       <div className="widget-title">
         <button type="button" className="widget-button">
           <h4>Category</h4>

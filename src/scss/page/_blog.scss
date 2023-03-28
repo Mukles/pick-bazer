@@ -87,7 +87,11 @@
     }
 
     .widget {
-      padding: 0;
+      border: none;
+    }
+
+    .widget-title {
+      margin-bottom: 18px;
     }
 
     h3 {
